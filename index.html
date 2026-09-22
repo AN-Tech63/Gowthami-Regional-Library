@@ -1468,6 +1468,10 @@
     const homePage = document.getElementById('Home-Page');
     const historyPage = document.getElementById('History-Page');
 
+    window.onload = () => {
+        showPage('home');
+    }; 
+
     function showPage(page) {
       const showHistory = page === 'history';
       homePage.style.display = showHistory ? 'none' : 'block';
