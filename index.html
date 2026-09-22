@@ -837,9 +837,10 @@
 
   <!-- HEADER -->
   <header class="main-header">
-    <a href="#top" class="skip-link">
+    
       <div class="header-container">
         <div class="logo-brand">
+          <a href="#top" class="skip-link">
           <div class="logo-emblem" aria-hidden="true">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"
               stroke-linejoin="round">
@@ -847,6 +848,7 @@
               <path d="M12 6v13.500" />
             </svg>
           </div>
+          </a>
           <div class="brand-text">
             <h1>శ్రీ గౌతమీ ప్రాంతీయ గ్రంథాలయం</h1>
             <p>Sri Gautami Regional Library, Rajahmundry</p>
@@ -855,8 +857,8 @@
         <button class="mobile-toggle" id="mobileToggle" aria-label="Open menu" aria-expanded="false"
           aria-controls="navMenu">&#9776;</button>
       </div>
-    </a>
     
+
     <nav class="nav-bar" aria-label="Main">
       <div class="nav-container">
         <ul class="nav-menu" id="navMenu">
@@ -1465,6 +1467,15 @@
       const open = menu.classList.toggle('active');
       toggle.setAttribute('aria-expanded', open);
       toggle.setAttribute('aria-label', open ? 'Close menu' : 'Open menu');
+    });
+
+    //once button is clicked, close the menu when a link is clicked
+    menu.querySelectorAll('a').forEach(link => {
+      link.addEventListener('click', () => {
+        menu.classList.remove('active');
+        toggle.setAttribute('aria-expanded', 'false');
+        toggle.setAttribute('aria-label', 'Open menu');
+      });
     });
 
     // Smooth scrolling for anchor links
