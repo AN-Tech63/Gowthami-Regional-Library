@@ -192,38 +192,19 @@
     .nav-menu {
       display: flex;
       align-items: center;
-      flex-wrap: nowrap;
-      justify-content: space-between;
-      width: 100%;
-      overflow-x: auto;
-      scrollbar-width: none;
-    }
-
-    .nav-menu::-webkit-scrollbar {
-      display: none;
-    }
-
-    .nav-item {
-      flex: 0 0 auto;
-      position: relative;
+      flex-wrap: wrap;
     }
 
     .nav-link {
       position: relative;
-      display: flex;
-      align-items: center;
-      gap: 5px;
-      padding: 13px 14px;
-      background: none;
-      border: none;
+      display: block;
+      padding: 13px 18px;
       color: #F5EFE6;
-      font: inherit;
       font-weight: 500;
-      font-size: .86rem;
-      transition: color .25s ease, background-color .25s ease, opacity .25s ease;
+      font-size: .9rem;
+      transition: color .25s ease, background-color .25s ease;
       overflow-wrap: anywhere;
       white-space: nowrap;
-      cursor: pointer;
     }
 
     .nav-link:hover,
@@ -232,67 +213,19 @@
       color: var(--accent-gold);
     }
 
-    .nav-link .caret {
-      display: inline-block;
-      font-size: .7em;
-      line-height: 1;
-      transition: transform .2s ease;
+    .nav-link[data-wip] {
+      color: #C9BFB2;
     }
 
-    .nav-item.open>.nav-link .caret {
-      transform: rotate(180deg);
-    }
-
-    /* --- placeholder ("work in progress") items: a lighter, disabled look --- */
-    .nav-item.wip>.nav-link,
-    .dropdown-link[data-wip] {
-      opacity: .5;
-    }
-
-    .nav-item.wip>.nav-link:hover,
-    .dropdown-link[data-wip]:hover {
-      opacity: .85;
-    }
-
-    /* --- dropdown submenus --- */
-    .dropdown-menu {
-      position: absolute;
-      top: 100%;
-      left: 0;
-      min-width: 230px;
-      margin: 0;
-      padding: 6px 0;
-      list-style: none;
-      background: #241210;
-      border: 1px solid rgba(197, 164, 90, .35);
-      border-radius: 7px;
-      box-shadow: var(--shadow-lg);
-      display: none;
-      flex-direction: column;
-      z-index: 1500;
-    }
-
-    .nav-item.has-dropdown.open>.dropdown-menu {
-      display: flex;
-    }
-
-    .dropdown-link {
-      display: block;
-      padding: 10px 18px;
-      color: #F5EFE6;
-      font-size: .87rem;
-      white-space: normal;
-    }
-
-    .dropdown-link:hover {
-      background-color: var(--primary-burgundy);
+    .nav-link[data-wip]:hover {
+      background-color: rgba(100, 24, 43, .55);
       color: var(--accent-gold);
     }
 
     /* --- HERO BANNER (plain image, no overlay) --- */
     .hero-banner {
       padding: 26px 6% 6px;
-      background: var(--bg-parchment);
+      background: var(--primary-dark);
       border-bottom: 4px solid var(--accent-gold);
     }
 
@@ -822,7 +755,7 @@
       display: flex;
       align-items: center;
       gap: 10px;
-      max-width: 90vw;
+      max-width: 100vw;
       padding: 13px 22px;
       background: var(--primary-dark);
       color: #F5EFE6;
@@ -870,14 +803,13 @@
       }
 
       .nav-link {
-        padding-left: 11px;
-        padding-right: 11px;
-        font-size: .82rem;
+        padding-left: 13px;
+        padding-right: 13px;
       }
 
       .nav-link::after {
-        left: 11px;
-        right: 11px;
+        left: 13px;
+        right: 13px;
       }
     }
 
@@ -972,8 +904,6 @@
         flex-direction: column;
         align-items: stretch;
         flex-wrap: nowrap;
-        justify-content: flex-start;
-        width: auto;
         max-height: 70vh;
         overflow-y: auto;
       }
@@ -982,14 +912,8 @@
         display: flex;
       }
 
-      .nav-item {
-        width: 100%;
-      }
-
       .nav-link {
-        width: 100%;
         padding: 13px 5%;
-        font-size: .92rem;
         border-bottom: 1px solid rgba(255, 255, 255, .06);
       }
 
@@ -997,23 +921,6 @@
         left: 5%;
         right: auto;
         width: 70px;
-      }
-
-      /* on mobile, dropdowns expand inline instead of floating */
-      .dropdown-menu {
-        position: static;
-        min-width: 0;
-        margin: 0;
-        padding: 0;
-        border: none;
-        border-radius: 0;
-        box-shadow: none;
-        background: rgba(0, 0, 0, .18);
-      }
-
-      .dropdown-link {
-        padding: 12px 9%;
-        border-bottom: 1px solid rgba(255, 255, 255, .05);
       }
 
       .hero-banner {
@@ -1169,26 +1076,749 @@
 
 <body>
 
-  <div id="History-Page">
+  <header class="main-header">
 
-    <section id="history">
+    <div class="header-container">
 
-      <div class="container">
+      <div class="logo-brand">
+
+        <a href="#top" class="skip-link">
+
+          <div class="logo-emblem" aria-hidden="true">
+
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"
+              stroke-linejoin="round">
+
+              <path d="M2 5.5C4.5 4 8 4 12 6c4-2 7.5-2 10-.5V19c-2.5-1.5-6-1.5-10 .5-4-2-7.500-2-10-.5z" />
+
+              <path d="M12 6v13.500" />
+
+            </svg>
+
+          </div>
+
+        </a>
 
 
-        <div class="section-title">
+        <div class="brand-text">
+          <h1>
+            శ్రీ గౌతమీ ప్రాంతీయ గ్రంథాలయం
+          </h1>
 
-          <h2>Work in Progress</h2>
-
-          <p>Contact Developer</p><br/>
+          <p>
+            Sri Gowthami Regional Library, Rajamahendravaram
+          </p>
 
         </div>
 
       </div>
 
-    </section>
 
+      <button class="mobile-toggle" id="mobileToggle" aria-label="Open menu" aria-expanded="false"
+        aria-controls="navMenu">
+
+        &#9776;
+
+      </button>
+
+    </div>
+
+    <nav class="nav-bar" aria-label="Main">
+
+      <div class="nav-container">
+
+        <ul class="nav-menu" id="navMenu">
+
+          <li class="nav-item active">
+            <a href="#top" class="nav-link">Home</a>
+          </li>
+
+          <li class="nav-item">
+            <a href="#about" class="nav-link">About</a>
+          </li>
+
+          <li class="nav-item">
+            <a href="#achievements" class="nav-link">Achievements</a>
+          </li>
+
+          <li class="nav-item">
+            <a href="#" class="nav-link" data-wip="Library">Books</a>
+          </li>
+
+          <!-- <li class="nav-item">
+            <a href="#" class="nav-link" data-wip="Audiobooks">Audiobooks</a>
+          </li> -->
+
+          <li class="nav-item">
+            <a href="#" class="nav-link" data-wip="Gallery">Gallery</a>
+          </li>
+
+          <!-- <li class="nav-item">
+            <a href="#" class="nav-link" data-wip="Donations">Donations</a>
+          </li> -->
+
+          <li class="nav-item">
+            <a href="#" class="nav-link" data-wip="Facilities">Facilities</a>
+          </li>
+
+          <li class="nav-item">
+            <a href="#" class="nav-link" data-wip="Publications">Publications</a>
+          </li>
+
+          <li class="nav-item">
+            <a href="#memorial" class="nav-link">Babayamma Memorial Hall</a>
+          </li>
+
+          <li class="nav-item">
+            <a href="#location" class="nav-link">Location</a>
+          </li>
+
+          <li class="nav-item">
+            <a href="#history" class="nav-link">Timeline</a>
+          </li>
+
+        </ul>
+
+      </div>
+
+    </nav>
+
+  </header>
+
+  <main id="top">
+
+    <div id="Home-Page">
+
+      <!-- HERO: plain banner image, no overlay text or buttons -->
+      <div class="hero-banner">
+        <div class="hero-img-wrap">
+          <img src="Library webpage Image.jpeg"
+            alt="Sri Gowthami Regional Library, Rajamahendravaram — the Godavari bridges, an idol of Goddess Saraswati, and the library's name in Telugu and English, established 1898"
+            width="1600" height="1142" loading="eager">
+        </div>
+      </div>
+
+
+      <section id="about">
+
+        <div class="container">
+
+          <div class="section-title">
+
+            <h2>About the Library</h2>
+
+            <p>A public library in Rajamahendravaram with a history of more than a century</p>
+
+          </div>
+
+
+          <div class="about-grid">
+
+
+            <div class="about-text">
+
+              <p>
+                Sri Gowthami Regional Library began in 1898, when Madhurakavi Nalam Krishna
+                Rao named the library he had founded after Kandukuri Veeresalingam, out of
+                respect for him. It was run for a time at Nalam's Satram, then at the Kaki
+                family's building, and later at the Veeresalingam Town Hall, before prominent
+                figures of that period turned it into a public (Sarvajana) library. By 1900 the
+                library already held about 5,000 books, with 150 readers and 206 members.
+              </p>
+
+              <p>
+                In 1919, Vaddadi Subbaraya Kavi's Library, managed by Addanki Satyanarayana
+                Murthy, merged with this public library, and in 1920 the two were registered
+                together under the name Gowthami Library.
+              </p>
+
+              <p>
+                In 1979, while Mahidhara Jaganmohana Rao was Secretary, the Government of
+                Andhra Pradesh took over the library. Since then it has been known as
+                &ldquo;Sri Gowthami Regional Library&rdquo;. A new building went up in 1987 in
+                place of the old, dilapidated Manduva Logili (traditional courtyard-style)
+                structure; a first floor was added later, and efforts are now underway to add
+                a second floor.
+              </p>
+
+              <p>
+                Today the library holds about 1,40,000 books. Around 40,000 of these are very
+                old manuscripts and periodicals, and the library also holds 417 palm-leaf
+                manuscripts.
+              </p>
+
+            </div>
+
+
+            <div class="fact-card">
+
+              <h3>The library at a glance</h3>
+
+              <dl>
+
+                <div>
+                  <dt>Founded</dt>
+                  <dd>1898</dd>
+                </div>
+
+                <div>
+                  <dt>Registered as Gowthami Library</dt>
+                  <dd>1920 (merged 1919)</dd>
+                </div>
+
+                <div>
+                  <dt>Taken over by the Government of Andhra Pradesh</dt>
+                  <dd>1979</dd>
+                </div>
+
+                <div>
+                  <dt>Main building</dt>
+                  <dd>Built 1987; first floor added; second floor planned</dd>
+                </div>
+
+                <div>
+                  <dt>Babayamma Hall (rebuilt)</dt>
+                  <dd>Two storeys, about 5,600 sq ft each</dd>
+                </div>
+
+                <div>
+                  <dt>Place</dt>
+                  <dd>Rajamahendravaram, Andhra Pradesh</dd>
+                </div>
+
+              </dl>
+
+            </div>
+
+          </div>
+
+        </div>
+
+      </section>
+
+
+      <section id="achievements" class="achievements">
+
+        <div class="container">
+
+
+          <div class="section-title">
+
+            <h2>Achievements</h2>
+
+            <p>What the library holds and what it has built</p>
+
+          </div>
+
+
+          <div class="stats-strip">
+
+            <div class="stat-box">
+              <h3>1,40,000</h3>
+              <p>Books in the library</p>
+            </div>
+
+            <div class="stat-box">
+              <h3>40,000</h3>
+              <p>Very ancient books, handwritten copies and periodicals</p>
+            </div>
+
+            <div class="stat-box">
+              <h3>417</h3>
+              <p>Palm-leaf manuscripts</p>
+            </div>
+
+          </div>
+
+
+          <div class="ach-grid">
+
+            <article class="ach-card">
+              <h3>A building raised over the years</h3>
+              <p>
+                After the Government takeover, a new building went up in 1987 in place of the
+                old Manduva Logili courtyard structure. A first floor was added later, and the
+                library is now working towards a second floor.
+              </p>
+            </article>
+
+            <article class="ach-card">
+              <h3>Babayamma Memorial Hall rebuilt</h3>
+              <p>
+                When the old hall became unsafe by 2003&ndash;04, Dr. Aripirala Narayana Rao
+                asked the then city MLA, Dr. Akula Satyanarayana Rao, to rebuild it. &#8377;75
+                lakh came via Lok Sabha member Sri Maganti Murali Mohan and &#8377;2 crore from
+                Chief Minister Sri Nara Chandrababu Naidu's special funds. The new building cost
+                &#8377;2.75 crore in all, and the Rajahmundry Municipal Corporation furnished it
+                with &#8377;30 lakh worth of furniture.
+              </p>
+            </article>
+
+            <article class="ach-card">
+              <h3>Ancient books and periodicals digitised</h3>
+              <p>
+                Digitisation began in 2017 with Dr. Aripirala Narayana Rao's support. From 2019
+                he has funded the salaries of three staff members digitising books and
+                periodicals from before 1960, while local organisations and donors have
+                contributed the equipment needed.
+              </p>
+            </article>
+
+            <article class="ach-card">
+              <h3>Eminent visitors across the decades</h3>
+              <p>
+                The library's early years drew notable visitors, including:
+              </p>
+              <ul>
+                <li>Mocherla Ramachandra Rao</li>
+                <li>Kattamanchi Ramalinga Reddy</li>
+                <li>Jayanthi Ramayya</li>
+                <li>Panchagnula Adinarayana Sastry</li>
+                <li>Gidugu Ramamurthy</li>
+                <li>Unnava Lakshminarayana</li>
+                <li>Raja Vikramadeva Varma</li>
+                <li>Chilakamarthi Lakshminarasimham</li>
+                <li>Sripada Krishnamurthy Sastry</li>
+              </ul>
+            </article>
+
+            <article class="ach-card">
+              <h3>Recent support</h3>
+              <p>
+                RUDA (Rajahmundry Urban Development Authority) sanctioned a grant of &#8377;33
+                lakh in 2024 for the library's development, and Rajahmundry Member of
+                Parliament Smt. Daggubati Purandeswari has been facilitating further grants and
+                assisting the library's growth.
+              </p>
+            </article>
+
+          </div>
+
+        </div>
+
+      </section>
+
+
+      <section id="memorial" class="memorial">
+
+        <div class="container">
+
+
+          <div class="section-title">
+
+            <h2>Babayamma Memorial Hall</h2>
+
+            <p>Built in 1927 in memory of Babayamma</p>
+
+          </div>
+
+
+          <div class="memorial-box">
+
+            <p>
+              Babayamma was the daughter of Kanchumarti Sitarama Chandra Rao. A child widow,
+              she passed away at about 25 or 26. She had studied up to matriculation, and while
+              serving as a municipal councillor she was also selected as a magistrate. In 1927,
+              her father, zamindar Sitarama Chandra Rao, gave &#8377;6,000 to Sri Gowthami
+              Library's governing body to build a hall in her memory.
+            </p>
+
+            <p>
+              The Babayamma Memorial Hall became a hub for literary, cultural and women's
+              programmes. The ceremony honouring Sri Sripada Krishnamurthy Sastry with the
+              &ldquo;Suvarna Gandapenderam&rdquo; &mdash; a prestigious golden-anklet honour
+              &mdash; was held in this hall.
+            </p>
+
+            <p>
+              The hall had fallen into disrepair by 2003&ndash;04. Dr. Aripirala Narayana Rao,
+              in his personal capacity, asked the then city MLA, Dr. Akula Satyanarayana Rao,
+              to build a new one in its place. The MLA secured &#8377;75 lakh from the then Lok
+              Sabha member, Sri Maganti Murali Mohan, and Chief Minister Sri Nara Chandrababu
+              Naidu later sanctioned &#8377;2 crore from his special funds. The new building was
+              built at a cost of &#8377;2.75 crore, and the Rajahmundry Municipal Corporation
+              provided furniture worth &#8377;30 lakh.
+            </p>
+
+          </div>
+
+        </div>
+
+      </section>
+
+
+      <section id="location" class="location-dark">
+
+        <div class="container">
+
+
+          <div class="section-title">
+
+            <h2>Location</h2>
+
+            <p>Find the library in Rajamahendravaram</p>
+
+          </div>
+
+
+          <div class="map-panel">
+
+
+            <div class="map-wrap">
+
+              <iframe
+                src="https://www.google.com/maps?q=Sri+Gowthami+Regional+Library+Rajamahendravaram+Andhra+Pradesh&output=embed"
+                loading="lazy" referrerpolicy="no-referrer-when-downgrade"
+                title="Map showing Sri Gowthami Regional Library, Rajamahendravaram">
+              </iframe>
+
+            </div>
+
+
+            <div class="location-info">
+
+              <h3>Sri Gowthami Regional Library</h3>
+
+              <div class="addr-line">
+
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                  stroke-linejoin="round">
+
+                  <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z" />
+                  <circle cx="12" cy="10" r="3" />
+
+                </svg>
+
+                <span>Rajamahendravaram,<br>Andhra Pradesh</span>
+
+              </div>
+
+              <a class="btn-custom"
+                href="https://www.google.com/maps/search/?api=1&query=Sri+Gowthami+Regional+Library+Rajamahendravaram"
+                target="_blank" rel="noopener">
+                Get directions
+              </a>
+
+            </div>
+
+          </div>
+
+        </div>
+
+      </section>
+
+    </div>
+
+
+    <div id="History-Page" style="display:none;">
+
+      <section id="history">
+
+        <div class="container">
+
+
+          <div class="section-title">
+
+            <h2>History</h2>
+
+            <p>From a small library in 1898 to the Sri Gowthami Regional Library</p>
+
+          </div>
+
+
+          <div class="timeline">
+
+
+            <div class="t-item">
+              <div class="t-year">1898</div>
+              <div class="t-body">
+                <h3>The library is founded and named</h3>
+                <p>
+                  Madhurakavi Nalam Krishna Rao named the library he had founded after
+                  Kandukuri Veeresalingam, out of respect for him.
+                </p>
+                <p>
+                  It was run for a time at Nalam's Satram, then at the Kaki family's building,
+                  and later at the Veeresalingam Town Hall. Prominent figures of that period
+                  turned it into a public (Sarvajana) library.
+                </p>
+              </div>
+            </div>
+
+            <div class="t-item">
+              <div class="t-year">1900</div>
+              <div class="t-body">
+                <h3>An early record of readership</h3>
+                <p>
+                  Records show the library already held about 5,000 books, with 150 readers
+                  and 206 members.
+                </p>
+              </div>
+            </div>
+
+            <div class="t-item">
+              <div class="t-year">1919&ndash;20</div>
+              <div class="t-body">
+                <h3>Merger and registration as Gowthami Library</h3>
+                <p>
+                  Vaddadi Subbaraya Kavi's Library, managed by Addanki Satyanarayana Murthy,
+                  merged with the public library in 1919. In 1920 the two were registered
+                  together as Gowthami Library.
+                </p>
+              </div>
+            </div>
+
+            <div class="t-item">
+              <div class="t-year">1922&ndash;23</div>
+              <div class="t-body">
+                <h3>A site of its own</h3>
+                <p>
+                  In 1922 the library moved to a site belonging to Barrister Garimella Bapanna
+                  Pantulu. In 1923, a plot of 3,100 square yards was purchased and registered
+                  for &#8377;13,500.
+                </p>
+                <p>
+                  Nyapathi Subbarao Pantulu and Kanchumarti Sitarama Chandra Rao helped in
+                  buying the site.
+                </p>
+              </div>
+            </div>
+
+            <div class="t-item">
+              <div class="t-year">1927</div>
+              <div class="t-body">
+                <h3>Babayamma Memorial Hall</h3>
+                <p>
+                  Zamindar Kanchumarti Sitarama Chandra Rao gave &#8377;6,000 to build a hall
+                  for the library in memory of his daughter Babayamma, who died at a very
+                  young age.
+                </p>
+              </div>
+            </div>
+
+            <div class="t-item">
+              <div class="t-year">1979</div>
+              <div class="t-body">
+                <h3>The Government of Andhra Pradesh takes over</h3>
+                <p>
+                  Many eminent people formed the governing body and developed the library;
+                  committee members such as Tenneti Ramashankaram and Kocharlakota
+                  Venkateswarlu rendered notable service. While Mahidhara Jaganmohana Rao was
+                  Secretary, the Government of Andhra Pradesh took over Sri Gowthami Library
+                  in 1979. Since then it has been known as &ldquo;Sri Gowthami Regional
+                  Library&rdquo;.
+                </p>
+                <p>
+                  Freedom fighters Vavilala Gopalakrishnayya and Krovvidi Lingaraju, former
+                  MLA Pothula Veerabhadra Rao, Varada Brahmanandam, and Y. S. Narasimha Rao of
+                  the Andhra Kesari Yuvajana Samithi, among others, played a key role in the
+                  Government's takeover of the library.
+                </p>
+              </div>
+            </div>
+
+            <div class="t-item">
+              <div class="t-year">1987</div>
+              <div class="t-body">
+                <h3>A new building replaces the old courtyard structure</h3>
+                <p>
+                  Following the takeover, a new building was constructed in 1987 in place of
+                  the earlier, dilapidated Manduva Logili (traditional courtyard-style)
+                  structure. A first floor was added later, and in recent times efforts have
+                  been made to add a second floor.
+                </p>
+              </div>
+            </div>
+
+            <div class="t-item">
+              <div class="t-year">2003&ndash;04</div>
+              <div class="t-body">
+                <h3>Babayamma Memorial Hall becomes unsafe</h3>
+                <p>
+                  By 2003&ndash;2004 the Babayamma Memorial Hall had fallen into disrepair.
+                  Dr. Aripirala Narayana Rao, in his personal capacity, asked the then city
+                  MLA, Dr. Akula Satyanarayana Rao, to build a new one in its place.
+                </p>
+              </div>
+            </div>
+
+            <div class="t-item">
+              <div class="t-year">Rebuilt hall</div>
+              <div class="t-body">
+                <h3>Babayamma Hall rebuilt for &#8377;2.75 crore</h3>
+                <p>
+                  Dr. Akula Satyanarayana Rao responded promptly and secured &#8377;75 lakh
+                  from the then Lok Sabha member, Sri Maganti Murali Mohan. Chief Minister
+                  Sri Nara Chandrababu Naidu then sanctioned &#8377;2 crore from his special
+                  funds.
+                </p>
+                <p>
+                  The new building was constructed at a total cost of &#8377;2.75 crore, and
+                  the Rajahmundry Municipal Corporation furnished it with &#8377;30 lakh worth
+                  of furniture.
+                </p>
+              </div>
+            </div>
+
+            <div class="t-item">
+              <div class="t-year">2017</div>
+              <div class="t-body">
+                <h3>Digitisation begins</h3>
+                <p>
+                  Dr. Aripirala Narayana Rao approached Dr. Akula Satyanarayana Rao with the
+                  idea of digitising ancient texts and housing them in the new building for
+                  future generations. Digitisation began with Dr. Aripirala's financial
+                  support.
+                </p>
+              </div>
+            </div>
+
+            <div class="t-item">
+              <div class="t-year">2019 onwards</div>
+              <div class="t-body">
+                <h3>Books and periodicals before 1960 are digitised</h3>
+                <p>
+                  Since 2019, Dr. Aripirala Narayana Rao has funded the salaries of three
+                  staff members digitising ancient books and periodicals from before 1960.
+                </p>
+                <p>
+                  At his appeal, numerous local organisations and philanthropists contributed
+                  the equipment needed for the project, and generous individuals from the
+                  town continue to offer voluntary financial support.
+                </p>
+              </div>
+            </div>
+
+            <div class="t-item">
+              <div class="t-year">2024</div>
+              <div class="t-body">
+                <h3>A grant from RUDA</h3>
+                <p>
+                  The Rajahmundry Urban Development Authority (RUDA) sanctioned a grant of
+                  &#8377;33 lakh in 2024 for the development of the library.
+                </p>
+              </div>
+            </div>
+
+            <div class="t-item">
+              <div class="t-year">Recent</div>
+              <div class="t-body">
+                <h3>Continuing support</h3>
+                <p>
+                  Rajahmundry Member of Parliament Smt. Daggubati Purandeswari has been
+                  facilitating further grants and assisting the library's ongoing development.
+                </p>
+              </div>
+            </div>
+
+          </div>
+
+        </div>
+
+      </section>
+
+    </div>
+
+  </main>
+
+
+  <footer>
+
+
+    <div class="footer-grid">
+
+
+      <div class="footer-col">
+
+        <h4>Sri Gowthami Regional Library</h4>
+
+        <p lang="te">శ్రీ గౌతమీ ప్రాంతీయ గ్రంథాలయం</p>
+
+        <p>Rajamahendravaram, Andhra Pradesh</p>
+
+      </div>
+
+
+      <div class="footer-col">
+
+        <h4>Quick links</h4>
+
+        <ul>
+
+          <li><a href="#top">Home</a></li>
+          <li><a href="#about">About</a></li>
+          <li><a href="#achievements">Achievements</a></li>
+          <li><a href="#history">Timeline</a></li>
+          <li><a href="#memorial">Babayamma Memorial Hall</a></li>
+          <li><a href="#location">Location</a></li>
+
+        </ul>
+
+      </div>
+
+
+      <div class="footer-col">
+
+        <h4>Collection</h4>
+
+        <ul>
+
+          <li>About 1,40,000 books</li>
+          <li>About 40,000 very ancient books, handwritten copies and periodicals</li>
+          <li>417 palm-leaf manuscripts</li>
+
+        </ul>
+
+      </div>
+
+
+      <div class="footer-col">
+
+        <h4>Working Hours</h4>
+
+        <div>
+          <strong>Main Reading Halls:</strong>
+          <br>
+          8:00 AM &ndash; 8:00 PM (Mon - Sat)
+        </div>
+
+        <br>
+
+        <div>
+          <strong>Digital &amp; Manuscript Section:</strong>
+          <br>
+          10:00 AM &ndash; 5:00 PM
+        </div>
+
+        <br>
+
+        <div style="color:#C5A059;font-style:italic;">
+          Closed on Every Thursday, Public Holidays &amp; State Holidays.
+        </div>
+
+      </div>
+
+    </div>
+
+
+    <div class="footer-bottom">
+      <p>&copy; Sri Gowthami Regional Library, Rajamahendravaram, Andhra Pradesh.</p>
+    </div>
+
+  </footer>
+
+
+  <!-- "work in progress" toast, shared by every placeholder nav button -->
+  <div class="wip-toast" id="wipToast" role="status" aria-live="polite">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+      stroke-linejoin="round">
+      <circle cx="12" cy="12" r="10" />
+      <path d="M12 8v4" />
+      <path d="M12 16h.01" />
+    </svg>
+    <span id="wipToastText">This page is still work in progress.</span>
   </div>
+
 
   <script>
 
